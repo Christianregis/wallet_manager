@@ -32,7 +32,7 @@
             placeholder="https://example.com/avatar.jpg"
             type="text"
             v-model="form.avatar"
-            
+
           />
         </div>
 
@@ -61,13 +61,9 @@
           />
         </div>
 
-        <button
-          type="submit"
-          :disabled="form.processing"
-          class="w-full py-2 font-semibold text-white transition duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50"
-        >
-          {{ form.processing ? "Inscription..." : "S'inscrire" }}
-        </button>
+        <Button type="submit" :disabled="form.processing" class="w-full">
+          S'inscrire
+        </Button>
       </form>
       <p class="mt-4 text-sm text-center text-gray-600">
         Vous avez déjà un compte ?
@@ -79,7 +75,8 @@
 <script setup lang="ts">
 import { useForm } from "@inertiajs/vue3";
 import { Link } from "@inertiajs/vue3";
-import Input from "../../components/ui/Input.vue";
+import Input from "@/components/ui/Input.vue";
+import Button from "@/components/ui/Button.vue";
 
 interface UserRegister {
   name: string;
