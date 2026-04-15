@@ -3,8 +3,8 @@
     class="flex items-center justify-center min-h-screen bg-linear-to-br from-blue-500 to-blue-700"
   >
     <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-2xl">
-      <h2 class="mb-2 text-3xl font-bold text-center text-gray-800">Se connecter</h2>
-      <p class="mb-6 text-center text-gray-500">Accédez à votre portefeuille</p>
+      <h2 class="mb-2 text-3xl font-bold text-center text-gray-800">S'inscrire</h2>
+      <p class="mb-6 text-center text-gray-500">Créez votre compte</p>
       <p class="text-blue-500 text-end">
         <Link href="/">Retour à la page d'accueil</Link>
       </p>
@@ -18,42 +18,32 @@
 
       <form @submit.prevent="handleRegister">
         <div class="mb-5">
-          <label for="name" class="block mb-2 text-sm font-medium text-gray-700"
-            >Nom</label
-          >
-          <input
-            type="text"
-            id="name"
-            v-model="form.name"
+          <Input
+            label="Nom complet"
             placeholder="John Doe"
-            required
-            class="w-full px-4 py-2 transition border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="text"
+            v-model="form.name"
+            :required="true"
           />
         </div>
         <div class="mb-5">
-          <label for="avatar" class="block mb-2 text-sm font-medium text-gray-700"
-            >Avatar</label
-          >
-          <input
+          <Input
+            label="Avatar (URL)"
+            placeholder="https://example.com/avatar.jpg"
             type="text"
-            id="avatar"
             v-model="form.avatar"
-            placeholder="URL de l'avatar"
-            class="w-full px-4 py-2 transition border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            
           />
         </div>
 
         <div class="mb-5">
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-700"
-            >Email</label
-          >
-          <input
+          <Input
+            label="Adresse e-mail"
+            placeholder="john@example.com"
             type="email"
-            id="email"
             v-model="form.email"
-            placeholder="johndoe@gmail.com"
-            required
-            class="w-full px-4 py-2 transition border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            :required="true"
+
           />
         </div>
 
@@ -89,6 +79,7 @@
 <script setup lang="ts">
 import { useForm } from "@inertiajs/vue3";
 import { Link } from "@inertiajs/vue3";
+import Input from "../../components/ui/Input.vue";
 
 interface UserRegister {
   name: string;
