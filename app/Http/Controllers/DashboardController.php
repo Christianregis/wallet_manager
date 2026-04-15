@@ -7,12 +7,16 @@ use App\Http\Resources\UserResource;
 use App\Http\Resources\WalletResource;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
     public function index(Request $request)
     {
+        // $user = Auth::user();
+        // dd($user);
+
         $user = $request->user();
 
         $wallets = $user->wallets()

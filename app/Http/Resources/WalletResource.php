@@ -19,7 +19,8 @@ class WalletResource extends JsonResource
             'currency' => $this->currency,
             'balance' => $this->balance,
             'user_id' => $this->user_id,
-            'updated_at' => optional($this->updated_at)->toDateTimeString(),
+            'updated_at' => $this->updated_at->format('d-m-Y H:i:s'),
+            'created_at' => $this->created_at->format('d-m-Y H:i:s'),
         ];
     }
 }

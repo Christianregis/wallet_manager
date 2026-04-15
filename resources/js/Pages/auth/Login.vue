@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center justify-center min-h-screen bg-linear-to-br from-blue-500 to-blue-700"
+class="flex items-center justify-center min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900"
   >
     <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-2xl">
       <h2 class="mb-2 text-3xl font-bold text-center text-gray-800">Se connecter</h2>

@@ -31,7 +31,7 @@ class TransactionController extends Controller
             $query->where('type', $request->input('type'));
         }
 
-        $transactions = $query->latest()->paginate(15)->withQueryString();
+        $transactions = $query->latest()->get();
 
         return Inertia::render('transactions/Index', [
             'wallet' => $user->wallets()->first() ? new WalletResource($user->wallets()->first()) : null,
