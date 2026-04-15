@@ -28,10 +28,13 @@
     </nav>
 
     <div class="p-4 border-t border-gray-700">
-      <button class="w-full py-2 bg-red-500 rounded hover:bg-red-600">Déconnexion</button>
+    <DashboardButton href="/logout" method="post" color="red">
+    <i class="fas fa-trash"></i> Deconnection
+    </DashboardButton>
     </div>
   </aside>
 </template>
 <script lang="ts" setup>
 import { Link } from '@inertiajs/vue3';
+import DashboardButton from '../../ui/Dashboard/DashboardButton.vue';
 </script>

@@ -39,7 +39,7 @@
         </div>
 
         <!-- TRANSACTIONS -->
-        <RecentTransactions />
+        <RecentTransactions :transactions="recentTransactions"/>
       </main>
     </div>
   </div>
@@ -61,6 +61,8 @@ import { usePage } from "@inertiajs/vue3";
 // }>()
 const page = usePage();
 
-const user = page.props.user.data;
+const user = page.props.auth.user.data;
 const summary = page.props.summary;
+
+const recentTransactions = page.props.recentTransactions.data;
 </script>

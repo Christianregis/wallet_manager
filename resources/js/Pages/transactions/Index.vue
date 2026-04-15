@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="flex h-screen bg-gray-100">
     <!-- Sidebar -->
     <Sidebar />
@@ -56,7 +56,7 @@
                     Description
                   </th>
                   <th class="px-6 py-3 text-sm font-semibold text-left text-gray-700">
-                    Catégorie
+                    Status
                   </th>
                   <th class="px-6 py-3 text-sm font-semibold text-left text-gray-700">
                     Montant
@@ -75,17 +75,28 @@
                   :key="transaction.id"
                   class="hover:bg-gray-50"
                 >
-                  <td class="px-6 py-4 text-sm text-gray-900">{{ transaction.date }}</td>
+                  <td class="px-6 py-4 text-sm text-gray-900">
+                    {{ transaction.created_at }}
+                  </td>
                   <td class="px-6 py-4 text-sm text-gray-900">
                     {{ transaction.description }}
                   </td>
                   <td class="px-6 py-4 text-sm text-gray-900">
-                    {{ transaction.category }}
+                    <span
+                      :class="
+                        transaction.status === 'success'
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-red-100 text-red-800'
+                      "
+                      class="px-2 py-1 text-xs font-semibold rounded-full"
+                    >
+                      {{ transaction.status }}
+                    </span>
                   </td>
                   <td
                     class="px-6 py-4 text-sm font-semibold"
                     :class="
-                      transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
+                      transaction.type === 'send' ? 'text-green-600' : 'text-red-600'
                     "
                   >
                     {{ transaction.amount }} CFA
@@ -103,18 +114,15 @@
                     </span>
                   </td>
                   <td class="px-6 py-4 text-sm">
-                    <Link
-                      :href="`/transactions/${transaction.id}/edit`"
-                      class="mr-3 text-blue-600 hover:text-blue-900"
-                    >
-                      Modifier
-                    </Link>
-                    <button
-                      @click="deleteTransaction(transaction.id)"
-                      class="text-red-600 hover:text-red-900"
-                    >
-                      Supprimer
-                    </button>
+                    <div class="flex gap-2">
+                      <DashboardButton href="/transactions/edit" color="blue">
+                        <i class="fas fa-edit"></i> Modifier
+                      </DashboardButton>
+
+                      <DashboardButton href="/transactions/delete" color="red">
+                        <i class="fas fa-trash"></i> Supprimer
+                      </DashboardButton>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -130,6 +138,7 @@
 import Navbar from "../../components/layout/dashboard/Navbar.vue";
 import Sidebar from "../../components/layout/dashboard/Sidebar.vue";
 import { Link, usePage } from "@inertiajs/vue3";
+import DashboardButton from "../../components/ui/Dashboard/DashboardButton.vue";
 
 const page = usePage();
 const user = page.props.auth.user.data;
