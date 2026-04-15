@@ -25,7 +25,7 @@ class DashboardController extends Controller
             ->take(10)
             ->get();
 
-        return Inertia::render('Dashboard', [
+        return Inertia::render('dashboard/Index', [
             'user' => new UserResource($user),
             'wallets' => WalletResource::collection($wallets),
             'recentTransactions' => TransactionResource::collection($recentTransactions),

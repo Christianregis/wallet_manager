@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -23,7 +22,7 @@ class AuthController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
 

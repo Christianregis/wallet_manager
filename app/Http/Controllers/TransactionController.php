@@ -33,7 +33,7 @@ class TransactionController extends Controller
 
         $transactions = $query->latest()->paginate(15)->withQueryString();
 
-        return Inertia::render('Transactions', [
+        return Inertia::render('transactions/Index', [
             'wallet' => $user->wallets()->first() ? new WalletResource($user->wallets()->first()) : null,
             'transactions' => TransactionResource::collection($transactions),
             'transactionTypes' => collect(TransactionType::cases())->map(fn ($type) => ['value' => $type->value, 'label' => $type->label()]),
