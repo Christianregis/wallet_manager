@@ -23,9 +23,9 @@ class SendMoneyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'receiver_id' => ['required', 'exists:users,id'],
+            'phone_receiver' => ['required', 'exists:users,phone'],
             'amount' => ['required', 'numeric', 'min:0.01'],
-            'currency' => ['required', 'string', 'in:CFA'],
+            'currency' => ['required', 'string'],
             'description' => ['nullable', 'string', 'max:255'],
         ];
     }
@@ -38,8 +38,8 @@ class SendMoneyRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'receiver_id.required' => 'The receiver field is required.',
-            'receiver_id.exists' => 'The selected receiver does not exist.',
+            'phone_receiver.required' => 'The receiver phone field is required.',
+            'phone_receiver.exists' => 'The selected receiver does not exist.',
             'amount.required' => 'The amount field is required.',
             'amount.numeric' => 'The amount must be a number.',
             'amount.min' => 'The amount must be at least 0.01.',

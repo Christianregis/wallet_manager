@@ -11,7 +11,7 @@ class="flex items-center justify-center min-h-screen bg-linear-to-br from-slate-
 
       <!-- Message d'erreur -->
       <div
-        v-if="form.errors.email"
+        v-if="form.errors.email || form.errors.password"
         class="p-4 mb-6 text-red-700 bg-red-100 border border-red-400 rounded"
       >
         {{ form.errors.email || form.errors.password }}

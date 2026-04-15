@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use function Termwind\render;
+
 Route::get('/', function () {
     return Inertia::render('Home');
 });
@@ -29,6 +31,9 @@ Route::post('/logout', [AuthController::class, 'logout'])
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    Route::get('/transactions/form', function(){
+        return Inertia::render('transactions/Send');
+    })->name("transaction.send.form");
     Route::post('/transactions/send', [TransactionController::class, 'send'])->name('transactions.send');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 });

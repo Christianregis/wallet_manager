@@ -32,7 +32,6 @@
             placeholder="https://example.com/avatar.jpg"
             type="text"
             v-model="form.avatar"
-
           />
         </div>
 
@@ -43,7 +42,15 @@
             type="email"
             v-model="form.email"
             :required="true"
-
+          />
+        </div>
+        <div class="mb-5">
+          <Input
+            label="Numero de telephone"
+            placeholder="671066137"
+            type="text"
+            v-model="form.phone"
+            :required="true"
           />
         </div>
 
@@ -81,6 +88,7 @@ import Button from "@/components/ui/Button.vue";
 interface UserRegister {
   name: string;
   avatar: string;
+  phone: string;
   email: string;
   password: string;
 }
@@ -88,12 +96,13 @@ interface UserRegister {
 const form = useForm<UserRegister>({
   name: "",
   avatar: "",
+  phone: "",
   email: "",
   password: "",
 });
 
 const handleRegister = () => {
-  form.post('/register', {
+  form.post("/register", {
     onSuccess: () => {
       form.reset();
     },

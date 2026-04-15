@@ -15,7 +15,7 @@
           <div class="flex items-center justify-between mb-6">
             <h1 class="text-3xl font-bold text-gray-800">Transactions</h1>
             <Link
-              href="/transactions"
+              href="/transactions/form"
               class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700"
             >
               + Nouvelle Transaction
