@@ -91,6 +91,6 @@ class TransactionController extends Controller
             ]);
         });
 
-        return to_route('transactions.index')->with('success', 'Le transfert a été effectué avec succès.');
+        return redirect()->route('transactions.index')->with('success', 'Le transfert a été effectué avec succès.');
     }
 }

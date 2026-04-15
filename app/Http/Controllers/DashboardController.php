@@ -7,7 +7,6 @@ use App\Http\Resources\UserResource;
 use App\Http\Resources\WalletResource;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
@@ -28,6 +27,8 @@ class DashboardController extends Controller
             ->latest()
             ->take(10)
             ->get();
+        $totalSent = Transaction::where('sender_id', $user->id)->sum('amount');
+        $totalReceived = Transaction::where('receiver_id', $user->id)->sum('amount');
 
         return Inertia::render('dashboard/Index', [
             'user' => new UserResource($user),
@@ -35,6 +36,8 @@ class DashboardController extends Controller
             'recentTransactions' => TransactionResource::collection($recentTransactions),
             'summary' => [
                 'balance' => $wallets->sum('balance'),
+                'totalSent'=> $totalSent,
+                'totalReceived' => $totalReceived,
                 'walletCount' => $wallets->count(),
                 'transactionCount' => $recentTransactions->count(),
             ],
