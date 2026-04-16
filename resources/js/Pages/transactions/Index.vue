@@ -96,7 +96,7 @@
                   <td
                     class="px-6 py-4 text-sm font-semibold"
                     :class="
-                      transaction.type === 'send' ? 'text-green-600' : 'text-red-600'
+                      transaction.sender.id != user.id ? 'text-green-600' : 'text-red-600'
                     "
                   >
                     {{ transaction.amount }} CFA
