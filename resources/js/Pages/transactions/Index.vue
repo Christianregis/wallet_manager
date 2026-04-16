@@ -115,10 +115,6 @@
                   </td>
                   <td class="px-6 py-4 text-sm">
                     <div class="flex gap-2">
-                      <DashboardButton href="/transactions/edit" color="blue">
-                        <i class="fas fa-edit"></i> Modifier
-                      </DashboardButton>
-
                       <DashboardButton href="/transactions/delete" color="red">
                         <i class="fas fa-trash"></i> Supprimer
                       </DashboardButton>
@@ -145,7 +141,3 @@ const user = page.props.auth.user.data;
 
 const transactions = page.props.transactions.data;
 </script>
-<!--
-    je veux le code de ce fichier (Tres professionel en respectat les couleurs et les composants des autre pas (Navbar, Sidebar)) et en repectant les attribut de mon modele et de mon controller
-je veux juste le template
--->
