@@ -3,7 +3,6 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -31,9 +30,12 @@ Route::post('/logout', [AuthController::class, 'logout'])
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
-    Route::get('/transactions/form', function(){
+    Route::get('/transactions/form', function () {
         return Inertia::render('transactions/Send');
     })->name("transaction.send.form");
     Route::post('/transactions/send', [TransactionController::class, 'send'])->name('transactions.send');
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+    Route::get('transactions/receive', function (){
+        return Inertia::render('transactions/Receive');
+    })->name("transactions.receive");
 });

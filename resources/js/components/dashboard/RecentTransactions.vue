@@ -2,7 +2,7 @@
   <div class="p-6 bg-white rounded shadow">
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-lg font-semibold">Transactions récentes</h2>
-      <a href="/transactions" class="text-blue-500 hover:underline">Voir tout</a>
+      <Link href="/transactions" class="text-blue-500 hover:underline">Voir tout</Link>
     </div>
 
     <table class="w-full text-left">
@@ -33,7 +33,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { usePage } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 
 const props = defineProps({
   transactions: [],
