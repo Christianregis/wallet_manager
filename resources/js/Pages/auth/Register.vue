@@ -25,17 +25,6 @@
           form.errors.phone
         }}
       </div>
-      <div
-        v-if="page.props.success"
-        class="p-4 mb-6 text-red-700 bg-red-100 border border-red-400 rounded"
-      >
-        {{
-          form.errors.name ||
-          form.errors.email ||
-          form.errors.password ||
-          form.errors.phone
-        }}
-      </div>
 
       <form @submit.prevent="handleRegister">
         <div class="mb-5">
