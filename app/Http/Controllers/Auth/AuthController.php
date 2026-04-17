@@ -14,8 +14,7 @@ class AuthController extends Controller
     {
         $credentials = $request->validated();
 
-        if (!Auth::attempt($credentials))
-        {
+        if (!Auth::attempt($credentials)) {
             return back()->withErrors(['email' => 'Identifiants invalides.']);
         }
 
@@ -38,11 +37,22 @@ class AuthController extends Controller
             'email' => $validatedData['email'],
             'avatar' => $validatedData['avatar'] ?? null,
             'phone' => $validatedData['phone'],
-            'password' => bcrypt($validatedData['password']),
+            'password' => $validatedData['password'],
         ]);
 
         Auth::login($user);
 
         return redirect()->route('dashboard');
+    }
+
+    public function delete($id)
+    {
+        $user = User::where('id', $id)->first();
+        if ($user) {
+            $user->delete();
+            return redirect()->route('login')->with('success', 'Suppression reussie !');
+        }else{
+            return back()->withErrors("Vous n'etes pas autorise !");
+        }
     }
 }

@@ -10,10 +10,31 @@
       </p>
       <!-- Message d'erreur -->
       <div
-        v-if="form.errors.name || form.errors.email || form.errors.password"
+        v-if="
+          form.errors.name ||
+          form.errors.email ||
+          form.errors.password ||
+          form.errors.phone
+        "
         class="p-4 mb-6 text-red-700 bg-red-100 border border-red-400 rounded"
       >
-        {{ form.errors.name || form.errors.email || form.errors.password }}
+        {{
+          form.errors.name ||
+          form.errors.email ||
+          form.errors.password ||
+          form.errors.phone
+        }}
+      </div>
+      <div
+        v-if="page.props.success"
+        class="p-4 mb-6 text-red-700 bg-red-100 border border-red-400 rounded"
+      >
+        {{
+          form.errors.name ||
+          form.errors.email ||
+          form.errors.password ||
+          form.errors.phone
+        }}
       </div>
 
       <form @submit.prevent="handleRegister">
@@ -80,11 +101,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useForm } from "@inertiajs/vue3";
+import { useForm, usePage } from "@inertiajs/vue3";
 import { Link } from "@inertiajs/vue3";
 import Input from "@/components/ui/Input.vue";
 import Button from "@/components/ui/Button.vue";
 
+
+const page = usePage();
 interface UserRegister {
   name: string;
   avatar: string;

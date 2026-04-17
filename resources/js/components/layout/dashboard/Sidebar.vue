@@ -28,7 +28,7 @@
     </nav>
 
     <div class="p-4 border-t border-gray-700">
-    <DashboardButton href="/logout" method="post" color="red">
+    <DashboardButton :href="'/delete/'+ user.id" method="post" color="red">
     <i class="fas fa-trash"></i> Deconnection
     </DashboardButton>
     </div>
@@ -37,4 +37,8 @@
 <script lang="ts" setup>
 import { Link } from '@inertiajs/vue3';
 import DashboardButton from '../../ui/Dashboard/DashboardButton.vue';
+import { usePage } from '@inertiajs/vue3';
+
+const page = usePage();
+const user = page.props.auth.user.data
 </script>

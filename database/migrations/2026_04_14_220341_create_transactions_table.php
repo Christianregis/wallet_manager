@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('sender_id');
-            $table->unsignedBigInteger('receiver_id');
+            $table->unsignedBigInteger('sender_id')->nullable();
+            $table->unsignedBigInteger('receiver_id')->nullable();
             $table->decimal('amount', 15, 2);
             $table->string("fee");
             $table->string("reference");
             $table->string("status")->default("pending");
-            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('sender_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('receiver_id')->references('id')->on('users')->onDelete('set null');
             $table->string('type')->default('send');
             $table->string('description')->nullable();
             $table->timestamps();

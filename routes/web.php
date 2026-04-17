@@ -27,6 +27,8 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
+Route::post("/delete/{id}", [AuthController::class, 'delete'])->middleware("auth")->name("delete.account");
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
